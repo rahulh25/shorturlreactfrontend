@@ -22,7 +22,7 @@ class URLShortner extends Component {
     Auth.currentAuthenticatedUser().then(user => {
       axios
         .get(
-          'http://localhost:5000/api/get_short_urls/' + user.attributes['email']
+          'http://aa7d8ea58f5054f5aae46d9128d4219c-2103874015.us-east-2.elb.amazonaws.com:5000/api/get_short_urls/' + user.attributes['email']
         )
         .then(result => {
           let finalResult = []
@@ -36,7 +36,7 @@ class URLShortner extends Component {
     Auth.currentAuthenticatedUser().then(user => {
       axios
         .get(
-          'http://localhost:5000/api/get_short_urls/' + user.attributes['email']
+          'http://aa7d8ea58f5054f5aae46d9128d4219c-2103874015.us-east-2.elb.amazonaws.com:5000/api/get_short_urls/' + user.attributes['email']
         )
         .then(result => {
           let finalResult = []
@@ -62,10 +62,9 @@ class URLShortner extends Component {
         var data = this.state.formFields
         data['email'] = this.state.email
         axios
-          .post('http://localhost:5000/api/short_url', data)
+          .post('http://aa7d8ea58f5054f5aae46d9128d4219c-2103874015.us-east-2.elb.amazonaws.com:5000/api/short_url', data)
           .then(response => {
             if (response.status === 200) {
-              this.getURL()
               this.setState({
                 formFields: { url: '', code: '' },
                 props: {
@@ -74,8 +73,8 @@ class URLShortner extends Component {
                   iserror: false
                 },
               })
-            } else {
               this.getURL()
+            } else {
               this.setState({
                 formFields: { url: '', code: '' },
                 props: {
@@ -84,6 +83,7 @@ class URLShortner extends Component {
                   iserror: true
                 }
               })
+              this.getURL()
             }
           })
           .catch(error =>

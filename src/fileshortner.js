@@ -3,6 +3,8 @@ import Messages from './messages'
 import { Auth } from 'aws-amplify'
 import ShowFileURL from './showFileURL'
 import axios from 'axios'
+
+
 class FileShortner extends Component {
   constructor () {
     super()
@@ -20,7 +22,7 @@ class FileShortner extends Component {
     Auth.currentAuthenticatedUser().then(user => {
       axios
         .get(
-          'http://localhost:5000/api/get_file_urls/' + user.attributes['email']
+          'http://aa7d8ea58f5054f5aae46d9128d4219c-2103874015.us-east-2.elb.amazonaws.com:5000/api/get_file_urls/' + user.attributes['email']
         )
         .then(result => {
           let finalResult = []
@@ -34,7 +36,7 @@ class FileShortner extends Component {
     Auth.currentAuthenticatedUser().then(user => {
       axios
         .get(
-          'http://localhost:5000/api/get_file_urls/' + user.attributes['email']
+          'http://aa7d8ea58f5054f5aae46d9128d4219c-2103874015.us-east-2.elb.amazonaws.com:5000/api/get_file_urls/' + user.attributes['email']
         )
         .then(result => {
           let finalResult = []
@@ -44,6 +46,7 @@ class FileShortner extends Component {
         })
     })
   }
+  
   onClick = event => {
     event.preventDefault()
     Auth.currentAuthenticatedUser()
@@ -53,7 +56,7 @@ class FileShortner extends Component {
         data.append('file', this.uploadInput.files[0])
         data.append('code', this.code.value)
         data.append('email', this.state.email)
-        fetch('http://localhost:5000/api/short_file_url', {
+        fetch('http://aa7d8ea58f5054f5aae46d9128d4219c-2103874015.us-east-2.elb.amazonaws.com:5000/api/short_file_url', {
           method: 'POST',
           body: data
         })

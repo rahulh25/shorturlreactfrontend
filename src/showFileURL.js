@@ -7,7 +7,7 @@ let refreshPage = () => {
 let deleteData = (e, id) => {
   e.preventDefault()
   axios
-    .delete('http://localhost:5000/api/delete_file/' + id)
+    .delete('http://aa7d8ea58f5054f5aae46d9128d4219c-2103874015.us-east-2.elb.amazonaws.com:5000/api/delete_file/' + id)
     .then(response => {
       if (response.status === 200) {
         console.log('Success')

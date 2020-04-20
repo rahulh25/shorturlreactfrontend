@@ -8,15 +8,23 @@
     "@testing-library/user-event": "^7.2.1",
     "aws-amplify": "^3.0.8",
     "aws-amplify-react": "^4.1.7",
+    "aws-sdk": "^2.658.0",
+    "bluebird": "^3.7.2",
+    "express": "^4.17.1",
+    "file-saver": "^2.0.2",
+    "file-type": "^14.1.4",
+    "fs": "0.0.1-security",
+    "multiparty": "^4.2.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-dropzone": "^10.2.2",
     "react-scripts": "3.4.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"  
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
