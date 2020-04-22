@@ -115,6 +115,13 @@ kubectl exec -it <pod_name> bash
 ```
 <p>But for simplicy we are not doing that for now.</p>
 
+| FILE NAME|
+|----------|
+|fileshortner.js|
+|showFileURL.js|
+|showURL.js|
+|urlShortner.js|
+
 ### Building our Docker image
 
 1. After placing all the files from the above folder (the build process) in nginx run the following command to create a Docker image:
