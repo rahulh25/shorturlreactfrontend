@@ -11,10 +11,10 @@
 
 <ol>
 <li>React</li>
-<li>AWS Amplify (For user Authentication)<a href="https://docs.amplify.aws/start/q/integration/react">Official Doc</a></li>
-<li>Flask- for our backend api<a href="https://github.com/rahulh25/shorturlflaskapi">More Info</a></li>
-<li>AWS EKS- to deploy our cluster<a href="https://aws.amazon.com/eks/">Offical Doc</a></li>
-<li>Grafana- To monitor our EKS cluster<a href="https://github.com/rahulh25/PrometheusandGrafanainEKS">How</a></li>
+<li>AWS Amplify (For user Authentication) <a href="https://docs.amplify.aws/start/q/integration/react">Official Doc</a></li>
+<li>Flask- for our backend api <a href="https://github.com/rahulh25/shorturlflaskapi">More Info</a></li>
+<li>AWS EKS- to deploy our cluster <a href="https://aws.amazon.com/eks/">Offical Doc</a></li>
+<li>Grafana- To monitor our EKS cluster <a href="https://github.com/rahulh25/PrometheusandGrafanainEKS">How</a></li>
 </ol>
 
 ## Folder structure for the project
