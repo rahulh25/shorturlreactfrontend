@@ -1,68 +1,61 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# React frontend for our URL Shortner and File uploader
 
-## Available Scripts
+## Goal
+<p>The goal of this project is to provide user with an option to shorten the URL of the websites they visit daily by giving them a name. Once the user clicks on the name they are redirected to the website. This application will act as a vault of short URLs and just like a bookmark on a browser allows them to save URLs. In addition to this the users can also provide a short URL for their files i.e. they can upload a file on the application and have a short URL for that as well. This way they can share the files to other users and have all their files in one place just like drop box.</p>
 
-In the project directory, you can run:
+## Requirements
 
-### `npm start`
+<p>This application will require a user authentication to allow the user to have the data specific to only that user. The application will make use of AWS amplify for user authentication.</p>
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Technologies Used
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+<ol>
+<li>React</li>
+<li>AWS Amplify (For user Authentication)</li>
+<li>Flask</li>
+<li>AWS EKS</li>
+<li>Grafana- To monitor our EKS cluster</li>
+</ol>
 
-### `npm test`
+## Folder structure for the project
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+│   .dockerignore                              # All the files to be ignored in our docker build process
+│   .gitignore                                 # The gitignore file
+│   .travis.yml                                # Specifies the desired building and testing environment for Travis CI
+│   Dockerfile
+│   package-lock.json
+│   package.json                               # File specifying the node packages required for the project
+│   README.md                                  # The file you are reading.
+│   │
+│   └───static                                 # Has all the static files required to run our application
+│
+├───public                                     # Has all the public files such as main index.html etc. 
+│
+└───src                                        # The main folder all our javascript code to run our React js app
+        App.js                                 # The main javascript file that gets rendered in index.js
+        fileshortner.js                        # The javascript file that shows the File upload part of the app
+        index.js                               # The main javascript file acts as the entry point for our React app
+        messages.js                            # The javascript file that shows the sucess and error messages                      
+        showFileURL.js                         # The javascript file that shows the files uploaded by user so far
+        showUrl.js                             # Renders the URL's stored by user so far
+        urlShortner.js                         # Renders the URL shortner part of the application
+```
 
-### `npm run build`
+## Steps to Run the application
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+1. Clone the repository on your local machine or download the zip folder.
+2. Open the downloaded or cloned repo in your favourite editor and run the below command
+    ```js
+    npm i
+    ```
+    This will install all the packages successfully on your machine.
+3. Install the aws amplify node package using the following command
+    ```js
+    npm install -g @aws-amplify/cli
+    ```
+    ![AWS NODE PACKAGE](https://github.com/rahulh25/screenshots/blob/master/frontend/aws_amplify_package.png)
+4. Next we will setup AWS amplify for our app.Run the following command to setup amplify for your project(Make sure you have a AWS account)
+    ```js
+    amplify init
+    ```
