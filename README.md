@@ -140,7 +140,7 @@
     ```bash
     kubectl create -f .\frontendservice.yaml
     ```
-3. Once you deployment and service files are created you can see your services using the following command:
+3. Once your deployment and service files are created you can see your services using the following command:
     ```bash
     kubectl get svc -o wide
     ```
