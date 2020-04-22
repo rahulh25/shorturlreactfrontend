@@ -11,10 +11,10 @@
 
 <ol>
 <li>React</li>
-<li>AWS Amplify (For user Authentication)</li>
-<li>Flask</li>
-<li>AWS EKS</li>
-<li>Grafana- To monitor our EKS cluster</li>
+<li>AWS Amplify (For user Authentication)</li><a href="https://docs.amplify.aws/start/q/integration/react">Official Doc</a>
+<li>Flask- for our backend api</li><a href="https://github.com/rahulh25/shorturlflaskapi">More Info</a>
+<li>AWS EKS- to deploy our cluster</li><a href="https://aws.amazon.com/eks/">Offical Doc</a>
+<li>Grafana- To monitor our EKS cluster</li><a href="https://github.com/rahulh25/PrometheusandGrafanainEKS">How</a>
 </ol>
 
 ## Folder structure for the project
@@ -44,6 +44,7 @@
 
 ## Steps to Run the application
 
+### Cloning the repository and adding all the node packages
 1. Clone the repository on your local machine or download the zip folder.
 2. Open the downloaded or cloned repo in your favourite editor and run the below command
     ```js
@@ -57,7 +58,7 @@
     npm install -g @aws-amplify/cli
     ```
     ![AWS NODE PACKAGE](https://github.com/rahulh25/screenshots/blob/master/frontend/aws_amplify_package.png)<br>
-2. Now we will configure our aws amplify. Run the following command:
+2. Now we will configure our aws amplify. Run the following command (Make sure you a AWS account setup):
     ```js
     amplify configure
     ```
@@ -96,3 +97,52 @@
     `Note:` Do remember to enter your email id in the username textfield of the registration page since you selected that as your verification method in step 5. If you do not enter email id it will give you a error saying that <p style="color:Red">The username should be 1 to 128 characters</p> long which is not the actual error.
 9. Once the user has successfully verified their email they are added to our user pool. You can see it by loggin in to your AWS management console and searching for Cognito>Manage User Pools> Select your userpool.
     ![USER ADDED TO POOL](https://github.com/rahulh25/screenshots/blob/master/frontend/user_added_to_pool.png)<br>
+
+### Building your react app.
+
+1. You can build you react app using the following command:
+    ```js
+    npm run-script build
+    ```
+    This creates a build folder inside our main project with files as shown below:<br>
+    ![BUILD FOLDER](https://github.com/rahulh25/screenshots/blob/master/frontend/build_image.png)<br>
+    Since we will be using nginx to create a Docker image for our application we will place all the files in the build folder in the nginx html folder.
+
+### Building our Docker image
+
+1. After placing all the files from the above folder (the build process) in nginx run the following command to create a Docker image:
+    ```bash
+    docker build -f Dockerfile -t <your_image_name> .
+    ```
+2. You can check you docker image using the following command:
+    ```bash
+    docker images
+    ```
+3. Push the docker image to your Docker hub using the below command:
+    ```bash
+    docker push <your_image_name>
+    ```
+4. You can run your Docker image locally using the following command:
+    ```bash
+    docker run -d -p 3000:80 <your_image_name>
+    ```
+5. Go to the following URL to see your image running successfully:
+    http:// 192.168.99.100:3000<br>
+    ![DOCKER IMAGE RUNNING SUCCESSFULLY](https://github.com/rahulh25/screenshots/blob/master/frontend/docker_running.png)<br>
+
+### Deploying our application in EKS
+
+1. Use <a href="https://github.com/rahulh25/PrometheusandGrafanainEKS/blob/master/frontenddeploy.yaml"> this</a> yaml to create a deployment for our frontend and run the following command in your kubernetes cluster:
+    ```bash
+    kubectl apply -f .\frontenddeploy.yaml
+    ```
+2. Next create a kubernetes service using <a href="https://github.com/rahulh25/PrometheusandGrafanainEKS/blob/master/frontendservice.yaml"> this</a> yaml file and the following command:
+    ```bash
+    kubectl create -f .\frontendservice.yaml
+    ```
+3. Once you deployment and service files are created you can see your services using the following command:
+    ```bash
+    kubectl get svc -o wide
+    ```
+4. You can then traverse to the external ip on port 80 and see your application running there.<br>
+    ![KUBERNETES COMMANDS](https://github.com/rahulh25/screenshots/blob/master/frontend/kubectl_frontend.png)<br>
