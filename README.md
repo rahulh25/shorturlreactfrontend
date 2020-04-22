@@ -23,7 +23,7 @@
 │   .dockerignore                              # All the files to be ignored in our docker build process
 │   .gitignore                                 # The gitignore file
 │   .travis.yml                                # Specifies the desired building and testing environment for Travis CI
-│   Dockerfile
+│   Dockerfile                                 # The docker file to build docker images
 │   package-lock.json
 │   package.json                               # File specifying the node packages required for the project
 │   README.md                                  # The file you are reading.
@@ -108,6 +108,13 @@
     ![BUILD FOLDER](https://github.com/rahulh25/screenshots/blob/master/frontend/build_image.png)<br>
     Since we will be using nginx to create a Docker image for our application we will place all the files in the build folder in the nginx html folder.
 
+
+<b>Note:</b> <p>Before you create docker images for the frontend and try to deploy it on AWS EKS make sure to first deploy the FLASK API on AWS EKS since the react application refers to the External IP of the FLASK API in the following files and will fail if you do not deploy the api first. One way to solve this problem is to set a environment variable in your react app and use that in place of your actual url in the files and then set the environment variable in your frontend kubernetes pod by running the following command:</p>
+```bash
+kubectl exec -it <pod_name> bash
+```
+<p>But for simplicy we are not doing that for now.</p>
+
 ### Building our Docker image
 
 1. After placing all the files from the above folder (the build process) in nginx run the following command to create a Docker image:
@@ -144,5 +151,5 @@
     ```bash
     kubectl get svc -o wide
     ```
-4. You can then traverse to the external ip on port 80 and see your application running there.<br>
+4. You can then traverse to the external ip on port 80 and see your application running there. Give it a few minutes before it can start<br>
     ![KUBERNETES COMMANDS](https://github.com/rahulh25/screenshots/blob/master/frontend/kubectl_frontend.png)<br>
