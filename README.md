@@ -94,7 +94,11 @@
     ![REACT APP](https://github.com/rahulh25/screenshots/blob/master/frontend/react_app.png)<br>
 8. Once a user is registered they recieve an email on their registered email id giving them a code to verify their email
     ![EMAIL VERIFICATION](https://github.com/rahulh25/screenshots/blob/master/frontend/email_verification.png)<br>
-    `Note:` Do remember to enter your email id in the username textfield of the registration page since you selected that as your verification method in step 5. If you do not enter email id it will give you a error saying that <p style="color:Red">The username should be 1 to 128 characters</p> long which is not the actual error.
+    `Note:` Do remember to enter your email id in the username textfield of the registration page since you selected that as your verification method in step 5. If you do not enter email id it will give you a error saying that
+    ```diff
+    - The username should be 1 to 128 characters long
+    ```
+    which is not the actual error.
 9. Once the user has successfully verified their email they are added to our user pool. You can see it by loggin in to your AWS management console and searching for Cognito>Manage User Pools> Select your userpool.
     ![USER ADDED TO POOL](https://github.com/rahulh25/screenshots/blob/master/frontend/user_added_to_pool.png)<br>
 
