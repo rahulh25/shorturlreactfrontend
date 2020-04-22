@@ -53,7 +53,7 @@
     This will install all the packages successfully on your machine.
 
 ### Setting up AWS Amplify for user authentication
-1. Install the aws amplify node package using the following command (in case you want to create a new React project. not needed for this one)
+1. Install the aws amplify node package using the following command:<br>
     ```js
     npm install -g @aws-amplify/cli
     ```
@@ -123,6 +123,13 @@ kubectl exec -it <pod_name> bash
 |urlShortner.js|
 
 ### Building our Docker image
+
+Make sure you have nginx installed on your system. Refer the below links to install it on your system:
+<a href="https://www.javatpoint.com/how-to-install-nginx-on-windows">For Windows</a><br>
+<a href="https://www.javatpoint.com/installing-nginx-on-mac">For Mac</a><br>
+<a href="https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/">For Linux</a><br>
+
+Once you have build the react application successfully place the files inside the build folder in the nginx html file before running the following commands.
 
 1. After placing all the files from the above folder (the build process) in nginx run the following command to create a Docker image:
     ```bash
