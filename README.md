@@ -52,42 +52,47 @@
     This will install all the packages successfully on your machine.
 
 ### Setting up AWS Amplify for user authentication
-3. Install the aws amplify node package using the following command (in case you want to create a new React project. not needed for this one)
+1. Install the aws amplify node package using the following command (in case you want to create a new React project. not needed for this one)
     ```js
     npm install -g @aws-amplify/cli
     ```
     ![AWS NODE PACKAGE](https://github.com/rahulh25/screenshots/blob/master/frontend/aws_amplify_package.png)<br>
-4. Now we will configure our aws amplify. Run the following command:
+2. Now we will configure our aws amplify. Run the following command:
     ```js
     amplify configure
     ```
     ![AMPLIFY CONFIGURE](https://github.com/rahulh25/screenshots/blob/master/frontend/aws_amplify_setup.png)<br>
     This will ask you for a region and whether you want to create a user. You can select your options here. Once you setup a user you will taken to the aws management console IAM where you will add a user and in the end of the step you will be provided with a <i>access_key</i> and <i>secret_access_key</i>. Make sure to save them. In the next step you need to enter the values.<br>
     ![ACCESS KEY](https://github.com/rahulh25/screenshots/blob/master/frontend/access_key.png)<br>
-5. Next we will setup AWS amplify for our app. Run the following command to setup amplify for your project(Make sure you have a AWS account)
+3. Next we will setup AWS amplify for our app. Run the following command to setup amplify for your project(Make sure you have a AWS account)
     ```js
     amplify init
     ```
     <i>This asks you a bunch of options (Fill them as shown below. Although the profile name can be of your choice.)</i><br>
     ![AMPLIFY INIT](https://github.com/rahulh25/screenshots/blob/master/frontend/amplify_init.png)<br>  
-6. Install the amplify react packages using the following command
+4. Install the amplify react packages using the following command
     ```js
     npm install aws-amplify aws-amplify-react
     ```
-7. Now we will setup authentication using AWS Amplify. Run the following command:
+5. Now we will setup authentication using AWS Amplify. Run the following command:
     ```js
     amplify add auth
     ```
     <i>Enter the options as shown below</i><br>
     ![AMPLIFY ADD AUTH](https://github.com/rahulh25/screenshots/blob/master/frontend/add_auth.png)<br>
-8. Push the changes to AWS amplify using the following command:
+6. Push the changes to AWS amplify using the following command:
     ```js
     amplify push
     ```
     ![AMPLIFY PUSH](https://github.com/rahulh25/screenshots/blob/master/frontend/amplify_push.png)<br>
-9. In the end run the following command to see your UI running on the localhost
+7. In the end run the following command to see your UI running on the localhost
     ```
     npm start
     ```
     This should bring up your React app on localhost port 3000 and you can see the Amplify login page
     ![REACT APP](https://github.com/rahulh25/screenshots/blob/master/frontend/react_app.png)<br>
+8. Once a user is registered they recieve an email on their registered email id giving them a code to verify their email
+    ![EMAIL VERIFICATION](https://github.com/rahulh25/screenshots/blob/master/frontend/email_verification.png)<br>
+    `Note:` Do remember to enter your email id in the username textfield of the registration page since you selected that as your verification method in step 5. If you do not enter email id it will give you a error saying that <p style="color:Red">The username should be 1 to 128 characters</p> long which is not the actual error.
+9. Once the user has successfully verified their email they are added to our user pool. You can see it by loggin in to your AWS management console and searching for Cognito>Manage User Pools> Select your userpool.
+    ![USER ADDED TO POOL](https://github.com/rahulh25/screenshots/blob/master/frontend/user_added_to_pool.png)<br>
