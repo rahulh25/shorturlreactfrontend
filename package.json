@@ -12,7 +12,7 @@
     "bluebird": "^3.7.2",
     "express": "^4.17.1",
     "file-saver": "^2.0.2",
-    "file-type": "^14.1.4",
+    "file-type": "^16.5.4",
     "fs": "0.0.1-security",
     "multiparty": "^4.2.1",
     "react": "^16.13.1",
